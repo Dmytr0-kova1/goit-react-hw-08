@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+}
+
+.name {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.tel {
+  margin-left: 10px;
+}
+
+.icon {
+  /* padding: 3px; */
+}
+
+.btn {
+  padding: 3px;
+}
