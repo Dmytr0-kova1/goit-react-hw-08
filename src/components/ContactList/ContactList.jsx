@@ -10,10 +10,6 @@ import { selectFilter } from "../../redux/filtersSlice";
 
 const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
-  const filters = useSelector(selectFilter);
-  const filteredData = contacts.filter((item) =>
-    item.name.toLowerCase().includes(filters.toLowerCase())
-  );
 
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
@@ -21,7 +17,7 @@ const ContactList = () => {
   return (
     <>
       <ul className={s.list}>
-        {filteredData.map((item) => (
+        {contacts.map((item) => (
           <li className={s.item} key={item.id}>
             <Contact name={item.name} number={item.number} id={item.id} />
           </li>
