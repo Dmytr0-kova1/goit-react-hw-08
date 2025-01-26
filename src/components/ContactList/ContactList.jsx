@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import s from "./ContactList.module.css";
 import {
@@ -7,8 +7,6 @@ import {
   selectIsLoading,
 } from "../../redux/contactsSlice";
 import { selectFilter } from "../../redux/filtersSlice";
-import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contactsOps";
 
 const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -16,11 +14,6 @@ const ContactList = () => {
   const filteredData = contacts.filter((item) =>
     item.name.toLowerCase().includes(filters.toLowerCase())
   );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
 
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
