@@ -1,6 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+
 import { register } from "../../redux/auth/operations";
 
 const RegistrationForm = () => {
