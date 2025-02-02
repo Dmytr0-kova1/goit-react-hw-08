@@ -1,6 +1,3 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchContacts } from "../redux/contacts/operations";
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 
@@ -14,12 +11,6 @@ const RegistrationPage = lazy(() =>
 );
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
