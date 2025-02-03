@@ -12,11 +12,14 @@
 }
 
 .link {
-  color: #000;
+  color: #fff;
   font-size: 26px;
   text-decoration: none;
+  font-weight: 700;
 }
 
 .active {
-  color: red;
+  color: #493566;
+  text-decoration: underline;
+  pointer-events: none;
 }

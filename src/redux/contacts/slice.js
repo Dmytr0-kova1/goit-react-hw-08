@@ -58,8 +58,10 @@ export const contactsReducer = slice.reducer;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
-    return contacts.filter((item) =>
-      item.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    return contacts.filter((item) => {
+      const nameMatch = item.name.toLowerCase().includes(filter.toLowerCase());
+      const numberMatch = item.number.includes(filter);
+      return nameMatch || numberMatch;
+    });
   }
 );

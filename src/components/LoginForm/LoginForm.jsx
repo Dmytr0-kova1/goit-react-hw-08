@@ -23,7 +23,7 @@ const LoginForm = () => {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form className="min-h-screen flex flex-col justify-center items-center">
+        <Form className="min-h-screen flex flex-col mt-20 items-center">
           <fieldset className="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
             <legend className="fieldset-legend">Login</legend>
             <label className="fieldset-label flex flex-col items-start">
