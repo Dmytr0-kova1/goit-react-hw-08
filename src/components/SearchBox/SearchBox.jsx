@@ -15,7 +15,7 @@ const SearchBox = () => {
     <div>
       <Formik>
         <label className={s.label}>
-          <span>Find contacts by name</span>
+          <span>Find contacts by name or number</span>
           <Field className={s.input} onChange={handleChange} type="text" />
         </label>
       </Formik>
