@@ -1,0 +1,30 @@
+.list {
+  list-style: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: larger;
+}
+
+.text {
+  font-weight: 500;
+}
+
+.content {
+  color: #fff;
+  padding: 10px;
+  height: 740px;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../../img/phone-book.jpg);
+}

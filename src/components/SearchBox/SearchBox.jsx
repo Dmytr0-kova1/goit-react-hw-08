@@ -8,6 +8,7 @@ const SearchBox = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
+    if (e.target.value === " ") return;
     dispatch(changeFilter(e.target.value));
   };
 
@@ -15,8 +16,13 @@ const SearchBox = () => {
     <div>
       <Formik>
         <label className={s.label}>
-          <span>Find contacts by name or number</span>
-          <Field className={s.input} onChange={handleChange} type="text" />
+          <span className={s.span}>Find contacts by name or number</span>
+          <Field
+            className="input input-primary"
+            placeholder="Search"
+            onChange={handleChange}
+            type="text"
+          />
         </label>
       </Formik>
     </div>

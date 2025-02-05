@@ -11,6 +11,7 @@ import {
   selectEditingContact,
 } from "../../redux/contacts/slice";
 import { editContact } from "../../redux/contacts/operations";
+import toast, { Toaster } from "react-hot-toast";
 
 const ContactEditor = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const ContactEditor = ({ onClose }) => {
       dispatch(editContact({ id: editingContact.id, name, number }));
       onClose();
     }
+    toast.success("contact successfully edited!");
   };
 
   const handleClose = () => {
@@ -44,33 +46,37 @@ const ContactEditor = ({ onClose }) => {
   return (
     <Formik>
       <Form className={s.form} onSubmit={handleSubmit}>
+        <Toaster position="top-center" reverseOrder={false} />
+
         <div className={s.content}>
-          <label className={s.label}>
-            <FaUser className={s.icon} />
-            <Field
-              type="text"
-              className="pl-1"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <label className={s.label}>
-            <BsFillTelephoneFill className={s.icon} />
-            <Field
-              type="text"
-              className="pl-1"
-              placeholder="Number"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
-          </label>
+          <div className="flex flex-col items-center gap-3">
+            <label className="input validator">
+              <FaUser className={s.icon} />
+              <Field
+                type="text"
+                className="pl-1"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label className="input validator">
+              <BsFillTelephoneFill className={s.icon} />
+              <Field
+                type="number"
+                className="tabular-nums"
+                placeholder="Number"
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+              />
+            </label>
+          </div>
           <div className={s.btn}>
-            <button className="btn btn-success w-12 h-6" type="submit">
+            <button className="btn btn-success  w-18 h-8" type="submit">
               Save
             </button>
             <button
-              className="btn btn-error w-12 h-6"
+              className="btn btn-error w-18 h-8"
               type="button"
               onClick={handleClose}
             >

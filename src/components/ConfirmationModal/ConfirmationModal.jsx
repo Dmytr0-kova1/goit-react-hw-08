@@ -6,6 +6,7 @@ import { closeModal } from "../../redux/modal/slice";
 import { deleteContact } from "../../redux/contacts/operations";
 import { selectContactId, selectOpenModal } from "../../redux/modal/selectors";
 import { selectIsError, selectIsLoading } from "../../redux/contacts/selectors";
+import toast, { Toaster } from "react-hot-toast";
 
 const ConfirmationModal = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const ConfirmationModal = () => {
     if (!isError) {
       dispatch(closeModal());
     }
+    toast.success("the contact has been deleted!");
   };
 
   const handleCancel = () => {
@@ -36,7 +38,10 @@ const ConfirmationModal = () => {
         <p className={s.text}>Are you sure you want to delete this contact?</p>
         {isError && <h2>Something went wrong!</h2>}
         {isLoading ? (
-          <p>Loading...</p>
+          <button className="btn">
+            <span className="loading loading-spinner"></span>
+            loading
+          </button>
         ) : (
           <div className={s.btn}>
             <button className="btn btn-success" onClick={handleConfirm}>
@@ -48,6 +53,7 @@ const ConfirmationModal = () => {
           </div>
         )}
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

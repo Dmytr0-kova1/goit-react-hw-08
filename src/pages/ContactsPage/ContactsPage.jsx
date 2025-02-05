@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-import s from "./ContactsPage.module.css";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactsList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
@@ -16,9 +15,11 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div className={s.container}>
-      <ContactForm />
-      <SearchBox />
+    <div className="pl-10 pr-10 mt-10">
+      <div className="flex  justify-evenly mb-15">
+        <ContactForm />
+        <SearchBox />
+      </div>
       <ContactsList />
     </div>
   );

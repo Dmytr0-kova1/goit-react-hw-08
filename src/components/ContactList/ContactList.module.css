@@ -13,4 +13,6 @@
   padding: 10px;
   border: 1px solid #000;
   border-radius: 5px;
+  background-color: rgb(232, 229, 232);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
