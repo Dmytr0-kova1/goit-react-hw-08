@@ -1,11 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// register
-// login
-// logout
-// refreshUser
-
 export const goitApi = axios.create({
   baseURL: "https://connections-api.goit.global",
 });
@@ -40,7 +35,7 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
+export const logOut = createAsyncThunk("auth/logOut", async (_, thunkApi) => {
   try {
     const { data } = await goitApi.post("/users/logout");
     return data;

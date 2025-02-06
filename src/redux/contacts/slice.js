@@ -1,12 +1,11 @@
-import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { selectContacts, selectEditor } from "./selectors";
-import { selectFilter } from "../filters/selectors";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   addContact,
   deleteContact,
   editContact,
   fetchContacts,
 } from "./operations";
+import { logOut } from "../auth/operations";
 
 const initialState = {
   items: [],
@@ -53,12 +52,16 @@ const slice = createSlice({
         state.isLoading = false;
         state.editingContact = null;
       })
+      .addCase(logOut.fulfilled, () => {
+        return initialState;
+      })
       .addMatcher(
         isAnyOf(
           fetchContacts.pending,
           addContact.pending,
           deleteContact.pending,
-          editContact.pending
+          editContact.pending,
+          logOut.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -70,7 +73,8 @@ const slice = createSlice({
           fetchContacts.rejected,
           addContact.rejected,
           deleteContact.rejected,
-          editContact.rejected
+          editContact.rejected,
+          logOut.rejected
         ),
         (state, action) => {
           state.isError = action.payload;
@@ -82,24 +86,4 @@ const slice = createSlice({
 
 export const contactsReducer = slice.reducer;
 
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectFilter],
-  (contacts, filter) => {
-    return contacts.filter((item) => {
-      const nameMatch = item.name.toLowerCase().includes(filter.toLowerCase());
-      const numberMatch = item.number.includes(filter);
-      return nameMatch || numberMatch;
-    });
-  }
-);
-
 export const { setEditingContact, clearEditingContact } = slice.actions;
-
-export const selectEditingContact = createSelector(
-  [selectContacts, selectEditor],
-  (contacts, editingContactId) => {
-    return editingContactId
-      ? contacts.find((contact) => contact.id === editingContactId)
-      : null;
-  }
-);

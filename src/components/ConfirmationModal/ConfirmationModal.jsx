@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
 import s from "./ConfirmationModal.module.css";
 
@@ -6,7 +7,6 @@ import { closeModal } from "../../redux/modal/slice";
 import { deleteContact } from "../../redux/contacts/operations";
 import { selectContactId, selectOpenModal } from "../../redux/modal/selectors";
 import { selectIsError, selectIsLoading } from "../../redux/contacts/selectors";
-import toast, { Toaster } from "react-hot-toast";
 
 const ConfirmationModal = () => {
   const dispatch = useDispatch();

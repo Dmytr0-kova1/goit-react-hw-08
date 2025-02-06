@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { logout } from "../../redux/auth/operations";
+import { logOut } from "../../redux/auth/operations";
 import { selectUser } from "../../redux/auth/selectors";
 
 const UserMenu = () => {
@@ -9,7 +9,7 @@ const UserMenu = () => {
   return (
     <div className="flex items-center gap-20">
       <p>Welcome, {user.name}</p>
-      <button className="btn btn-primary" onClick={() => dispatch(logout())}>
+      <button className="btn btn-primary" onClick={() => dispatch(logOut())}>
         Logout
       </button>
     </div>

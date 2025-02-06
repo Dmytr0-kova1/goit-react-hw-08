@@ -6,12 +6,12 @@ import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import ContactEditor from "../ContactEditor/ContactEditor";
 import s from "./ContactList.module.css";
 
+import { setEditingContact } from "../../redux/contacts/slice";
+import { openModal } from "../../redux/modal/slice";
 import {
   selectEditingContact,
   selectFilteredContacts,
-  setEditingContact,
-} from "../../redux/contacts/slice";
-import { openModal } from "../../redux/modal/slice";
+} from "../../redux/contacts/selectors";
 
 const ContactList = () => {
   const dispatch = useDispatch();

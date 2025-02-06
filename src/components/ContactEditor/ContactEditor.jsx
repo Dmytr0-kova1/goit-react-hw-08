@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { FaUser } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import toast, { Toaster } from "react-hot-toast";
 
 import s from "./ContactEditor.module.css";
 
-import {
-  clearEditingContact,
-  selectEditingContact,
-} from "../../redux/contacts/slice";
 import { editContact } from "../../redux/contacts/operations";
-import toast, { Toaster } from "react-hot-toast";
+import { selectEditingContact } from "../../redux/contacts/selectors";
+import { clearEditingContact } from "../../redux/contacts/slice";
 
 const ContactEditor = ({ onClose }) => {
   const dispatch = useDispatch();
